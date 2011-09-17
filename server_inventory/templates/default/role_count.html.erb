@@ -1,0 +1,22 @@
+<html>
+<head>
+<script type="text/javascript" src="sortable.js"></script>
+</head>
+Generated at <%= @time_now %>
+<p></p>
+
+<table class="sortable" id="sortable_example" border="1">
+  <tr>
+    <th width="70%">Name</th>
+    <th width="30%">Count</th>
+  </tr>
+  <% @role_counts.sort.each do |role, count| %>
+<tr>
+     <td> <%= role %> </td>
+     <td> <%= count %> </td>
+</tr>
+  <% end %> 
+</table>
+
+Total roles registered with chef: <%= @role_counts.length %>
+</html>

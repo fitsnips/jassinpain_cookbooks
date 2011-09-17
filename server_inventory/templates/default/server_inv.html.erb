@@ -1,0 +1,30 @@
+<html>
+<head>
+<script type="text/javascript" src="sortable.js"></script>
+</head>
+Generated at <%= @time_now %>
+<p></p>
+
+<table class="sortable" id="sortable_example" border="1">
+  <tr>
+    <th width="13%">Name</th>
+    <th width="13%">IP</th>
+    <th width="13%">Hardware</th>
+    <th width="13%">OS</th>
+    <th width="24%">Roles</th>
+    <th width="24%">Recipes</th>
+  </tr>
+  <% @my_hosts.sort.each do |host| %>
+<tr>
+     <td> <%= host[:fqdn] %> </td>
+     <td> <%= host[:ipaddress] %> </td>
+     <td> <%= host[:dmi][:system][:product_name] %> </td>
+     <td> <%= host[:platform] %> <%= host[:platform_version] %> </td>
+     <td> <%= host.run_list.roles.join(", ") %> </td>
+     <td> <%= host.run_list.recipes.join(", ") %> </td>
+</tr>
+  <% end %> 
+</table>
+
+Total servers registered with chef: <%= @server_count %>
+</html>

@@ -1,0 +1,5 @@
+Name,IP, Hardware,OS, Roles, Recipes
+  <% @my_hosts.sort.each do |host| %>
+<%= host[:fqdn] %>, <%= host[:ipaddress] %>, <%= host[:dmi][:system][:product_name] %>, <%= host[:lsb][:description] %> , "<%= host.run_list.roles.join(", ") %>", "<%= host.run_list.recipes.join(", ") %>"
+  <% end %>
+
